@@ -2,8 +2,8 @@ const AllTodos = (props) => {
     var todos = props.todos.map((todo) => {
         return (
             <div key={todo.id}>
-                <h1>{todo.description}</h1>
-                <h3>{todo.done}</h3>
+                <h4 className={todo.done ? 'task-done' : 'task-open'}>{todo.description}</h4>
+                <Task todo={todo} handleDelete={props.handleDelete} />
             </div>
         )
     })

@@ -1,11 +1,14 @@
-const NewTask = (props) => {
+const NewItem = (props) => {
 
     let formFields = {}
 
-    return(
-        <form>
-            <input ref={ input => formFields.description = input } placeholder='Descreva a Task'/>
-            <input ref={ input => formFields.done = input } placeholder='Descreva a Task'/>
+    return (
+        <form onSubmit={(e) => {
+            props.handleFormSubmit(formFields.description.value); e.target.reset();
+        }
+        } >
+            <input ref={input => formFields.description = input} placeholder='Descreva a Task' />
+            <button>Criar</button>
         </form>
     )
 }
