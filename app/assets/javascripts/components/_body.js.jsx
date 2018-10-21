@@ -9,6 +9,8 @@ class Body extends React.Component {
         this.addNewTask = this.addNewTask.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
         this.deleteTask = this.deleteTask.bind(this)
+        this.handleUpdate = this.handleUpdate.bind(this)
+        this.updateTask = this.updateTask.bind(this)
     }
 
     
@@ -44,8 +46,29 @@ class Body extends React.Component {
         })
     }
 
+    handleUpdate(task){
+        fetch(`http://localhost:3000/api/v1/todos/${task.id}`,
+        {
+            method: 'PUT',
+            body: JSON.stringify({todo: task}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((response) => {
+            this.updateTask(task)
+        })
+    }
+
     deleteTask(id){
         newTasks = this.state.todos.filter((task => task.id !== id))
+        this.setState({
+            todos: newTasks
+        })
+    }
+
+    updateTask(task){
+        let newTasks = this.state.todos.filter((f) => f.id !== task.id)
+        newTasks.push(task)
         this.setState({
             todos: newTasks
         })
@@ -61,7 +84,7 @@ class Body extends React.Component {
         return(
             <div>
                 <NewItem handleFormSubmit={this.handleFormSubmit} />
-                <AllTodos todos={this.state.todos} handleDelete={this.handleDelete} />
+                <AllTodos todos={this.state.todos} handleDelete={this.handleDelete} handleUpdate={this.handleUpdate} />
             </div>
         )
     }

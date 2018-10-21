@@ -1,0 +1,106 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/home/vitorio/projetos_rails/react-test/app/models/user.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/home/vitorio/projetos_rails/react-test/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/vitorio/projetos_rails/react-test/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/home/vitorio/projetos_rails/react-test/app/controllers/api/v1/todos_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/vitorio/projetos_rails/react-test/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/vitorio/projetos_rails/react-test/app/models/todo.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/vitorio/projetos_rails/react-test/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/vitorio/projetos_rails/react-test/app/controllers/home_controller.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/vitorio/projetos_rails/react-test/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/vitorio/projetos_rails/react-test/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/vitorio/projetos_rails/react-test/app/jobs/application_job.rb": [
+        0,
+        0
+      ]
+    },
+    "timestamp": 1540077474
+  }
+}
