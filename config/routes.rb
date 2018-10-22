@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
+  post '/login' => "sessions#create"
+  delete '/logout' => "sessions#destroy"
+  resources :users
+  get '/profile' => "users#profile"
+
   namespace :api do
     namespace :v1 do
       resources :todos, only: [ :index, :create, :destroy, :update] do
