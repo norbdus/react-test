@@ -3,8 +3,11 @@ class Body extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentUser: null,
             todos: []
         };
+        this.updatCurrentUser = this.updateCurrentUser.bind(this);
+
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
         this.addNewTask = this.addNewTask.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
@@ -98,6 +101,12 @@ class Body extends React.Component {
             .then((response) => { return response.json() })
             .then((data) => { this.setState({ todos: data }) });
     }
+
+    updateCurrentUser(email) {
+        this.setState({
+          currentUser: email
+        })
+      }
 
     render(){
         return(
