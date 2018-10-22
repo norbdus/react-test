@@ -1,8 +1,8 @@
 module Api
     module V1
         class TodosController < ApplicationController
-            # skip_before_action :verify_authenticity_token
-            before_action :authenticate_user!
+            skip_before_action :verify_authenticity_token
+            #before_action :authenticate_user!
 
             def index
                 render json: Todo.all
@@ -24,8 +24,8 @@ module Api
             end
         
             def done_task
-                todo = Todo.find(params[:id])
-                todo.done
+                todo = Todo.find(params[:todo_id])
+                todo.done_toggle
                 render json: todo
             end
         

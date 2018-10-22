@@ -14,8 +14,20 @@
  *= require_self
  */
 
- .task-done {
+ body{
+    background-color: #f3f3f3;
+    align-content: center;
+  }
+  
+  .box {
+    margin-top: 0rem;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    width: 50%;
+   }
+
+  .task_done{
     text-decoration: line-through;
     font-style: italic;
-    color: darkgray;
- }
+    font-weight: 900;
+   }

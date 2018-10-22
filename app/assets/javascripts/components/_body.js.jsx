@@ -11,13 +11,13 @@ class Body extends React.Component {
         this.deleteTask = this.deleteTask.bind(this)
         this.handleUpdate = this.handleUpdate.bind(this)
         this.updateTask = this.updateTask.bind(this)
+        this.handleDone = this.handleDone.bind(this)
+        this.doneTask = this.doneTask.bind(this)
     }
-
-    
 
     handleFormSubmit(description){
         let body = JSON.stringify({ todo: {description: description} })
-        fetch('http://localhost:3000/api/v1/todos', {
+        fetch('/api/v1/todos', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,8 +35,19 @@ class Body extends React.Component {
         })
     }
 
+    handleDone(id){
+        fetch(`/api/v1/todos/${id}/done_task`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((response) => {
+            this.doneTask(id)
+        })
+    }
+
     handleDelete(id){
-        fetch(`http://localhost:3000/api/v1/todos/${id}`,{
+        fetch(`/api/v1/todos/${id}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,7 +58,7 @@ class Body extends React.Component {
     }
 
     handleUpdate(task){
-        fetch(`http://localhost:3000/api/v1/todos/${task.id}`,
+        fetch(`/api/v1/todos/${task.id}`,
         {
             method: 'PUT',
             body: JSON.stringify({todo: task}),
@@ -61,6 +72,14 @@ class Body extends React.Component {
 
     deleteTask(id){
         newTasks = this.state.todos.filter((task => task.id !== id))
+        this.setState({
+            todos: newTasks
+        })
+    }
+
+    doneTask(id){
+        let newTasks = this.state.todos.filter((f) => f.id !== task.id)
+        newTasks.push(task)
         this.setState({
             todos: newTasks
         })
@@ -84,7 +103,7 @@ class Body extends React.Component {
         return(
             <div>
                 <NewItem handleFormSubmit={this.handleFormSubmit} />
-                <AllTodos todos={this.state.todos} handleDelete={this.handleDelete} handleUpdate={this.handleUpdate} />
+                <AllTodos todos={this.state.todos} handleDelete={this.handleDelete} handleUpdate={this.handleUpdate} handleDone={this.handleDone} />
             </div>
         )
     }

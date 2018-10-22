@@ -8,7 +8,7 @@ const NewItem = (props) => {
         }
         } >
             <input ref={input => formFields.description = input} placeholder='Descreva a Task' />
-            <button>Criar</button>
+            <button className="waves-effect waves-light btn" >Criar</button>
         </form>
     )
 }
