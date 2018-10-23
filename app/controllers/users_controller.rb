@@ -3,12 +3,13 @@ class UsersController < ApiController
 
     def create
         user = User.create!(user_params)
-        render json: { token:auth_token }
+        render json: { token: user.auth_token }
     end
 
     def profile
-        user = User.find_by_auth_token!(request_headers[:token])
-        render json: { user: { username: user.username, email: user.email, name: user.name } }
+        user = User.find_by_auth_token!(request.headers[:token])
+        user_todos = user.todos
+        render json: { user: { username: user.username, email: user.email, name: user.name }, todos: user_todos }
     end
 
     private

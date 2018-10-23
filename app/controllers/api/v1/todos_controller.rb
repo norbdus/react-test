@@ -1,6 +1,7 @@
 module Api
     module V1
-        class TodosController < ApplicationController
+        class TodosController < ApiController
+            before_action :require_login
 
             def index
                 render json: Todo.all

@@ -2,6 +2,7 @@ class User < ApplicationRecord
     validates_uniqueness_of :username
     has_secure_password
     has_secure_token :auth_token
+    has_many :todos
 
 
     def invalidate_token
@@ -10,7 +11,7 @@ class User < ApplicationRecord
 
     def self.validate_login(username, password)
         user = find_by(username: username)
-        if user && user.autheticate(password)
+        if user && user.authenticate(password)
             user
         end
     end
