@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Todo.create([{ description: 'Task 1', done: false }, { description: 'Task 2',  done: false }, { description: 'Task 3', done: false }])
+User.create(name: 'vitorio', username: 'norbdus', email: 'norbdus@gmail.com', password: '12345678')
