@@ -2,17 +2,17 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::TodosController, type: :controller do
 
-    it '#index responds a 302 response (not autorized)' do
+    it '#index responds a 401 response (not autorized)' do
         get :index
-        expect(response).to have_http_status(302)
+        expect(response).to have_http_status(401)
     end
 
     describe 'as Logged Member' do
         before do
             @user = create(:user)
-            sign_in @user
+            @request.env['Authorization'] = "Token #{@user.auth_token}"
         end
-        it '#index authentication devise' do
+        it '#index authentication' do
             get :index
             expect(response).to have_http_status(200)
         end
