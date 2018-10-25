@@ -1,6 +1,6 @@
 module UserRemote
     def get_token(options)
-        response = HTTParty.post('http://localhost:3000/login', options)
+        response = HTTParty.post("#{url_remote}/login", options)
         if ( response.code == 200 )
             out = JSON.parse response.body
             out['token']
@@ -8,8 +8,13 @@ module UserRemote
     end
 
     def task_id
-      response_create = HTTParty.post('http://localhost:3000/api/v1/todos', { body: {description: "Task test"}.to_json, headers: headers_auth })
+      response_create = HTTParty.post("#{url_remote}/api/v1/todos", { body: {description: "Task test"}.to_json, headers: headers_auth })
       todo_response_create = JSON.parse(response_create.body)
       todo_response_create['id']
+    end
+
+    def url_remote
+        sleep(5)
+        'https://tasks-manager-vitorio.herokuapp.com'
     end
 end
