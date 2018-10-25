@@ -8,7 +8,7 @@ RSpec.describe SessionsController, type: :controller do
 
 
     it '#login' do
-        response = HTTParty.post('http://localhost:3000/login', options)
+        response = HTTParty.post("#{url_remote}/login", options)
         expect(response.code).to eq(200)
         out = JSON.parse response.body
         expect(response.body).to include_json(
