@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :todos, only: [ :index, :create, :destroy, :update] do
         post 'done_task'
       end
-      resources :sessions, only: [ :create, :destroy ]
+      # resources :sessions, only: [ :create, :destroy ]
     end
   end
 end
