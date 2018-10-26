@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   post '/login' => "sessions#create"
   delete '/logout' => "sessions#destroy"
-  resources :users
+  post '/register' => "users#create"
+  # resources :users
   get '/profile' => "users#profile"
 
   namespace :api do
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
       resources :todos, only: [ :index, :create, :destroy, :update] do
         post 'done_task'
       end
-      resources :sessions, only: [ :create, :destroy ]
+      # resources :sessions, only: [ :create, :destroy ]
     end
   end
 end
