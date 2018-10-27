@@ -1,25 +1,32 @@
-# README
+Rails API with React Client 
+-------------------
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an app in Ruby on Rails API and frontend with a react client.
+Can also sync with a Reac Native app [https://github.com/norbdus/react-native-app]
 
-Things you may want to cover:
+## Package Used
 
-* Ruby version
+- React
+- Materializecss
+- Font-Roboto
 
-* System dependencies
 
-* Configuration
+## Try
 
-* Database creation
+Online Demo: https://tasks-manager-vitorio.herokuapp.com/
 
-* Database initialization
+```bash
+git clone https://github.com/norbdus/react-test.git
+cd react-rails-example
+bundle install
+rails db:create
+cd client
+npm install
+cd ../
+foreman start -p 3000
+```
 
-* How to run the test suite
+and the open http://localhost:3000
 
-* Services (job queues, cache servers, search engines, etc.)
+## Screenshots
 
-* Deployment instructions
-
-* ...
-# react-test
