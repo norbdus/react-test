@@ -32,11 +32,16 @@ class App extends Component {
         }).then(res => res.json())
             .then(res => {
                 console.log(res);
-                Auth.authenticateToken(res.token);
-                this.setState({
-                    auth: Auth.isUserAuthenticated(),
-                    // shouldGoToDash: true,
-                });
+                if(res["message"] == 'error'){
+                    window.Materialize.toast(`${res['error'][0]} ${res['error'][1]}`, 5000);
+                }else{
+                    Auth.authenticateToken(res.token);
+                    this.setState({
+                        auth: Auth.isUserAuthenticated(),
+                        // shouldGoToDash: true,
+                    });
+                }
+                
             }).catch(err => {
                 console.log(err);
         })
@@ -68,11 +73,17 @@ class App extends Component {
             }
         }).then(res => res.json())
         .then(res => {
-            window.Materialize.toast('Seja Bem Vindo', 5000);
+            console.log(`olha a resposta ${res.inspect}`);
             Auth.authenticateToken(res.token);
-            this.setState({
-                auth: true,
-            });
+            console.log(`olha a autenticacao ${Auth.isUserAuthenticated()}`);
+            if (Auth.isUserAuthenticated()){
+                this.setState({
+                    auth: true,
+                });
+                window.Materialize.toast('Seja Bem Vindo', 5000);
+            }else{
+                window.Materialize.toast('Usuário ou senha inválidos', 5000);
+            }
         }).catch(err => console.log(err));
         
     }

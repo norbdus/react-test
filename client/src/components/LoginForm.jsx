@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Input, Icon} from 'react-materialize';
+// import { Field } from 'react-final-form-html5-validation';
 
 import './LoginForm.css';
 
@@ -38,7 +39,7 @@ class LoginForm extends Component {
                         </span>
                         <Row>
                             <div className="input-field col s12">
-                                <Input s={12} type="text" name="username" label="Username" value={this.state.username} onChange={this.handleChange}><Icon>account_box</Icon></Input>
+                                <Input s={12} type="text" name="username" require="true" label="Username" value={this.state.username} onChange={this.handleChange}><Icon>account_box</Icon></Input>
                             </div>
                         </Row>
                         <Row>

@@ -1,10 +1,12 @@
 class Auth {
     static authenticateToken(token) {
-        sessionStorage.setItem('token', token);
+        if(token !== 'undefined'){
+            sessionStorage.setItem('token', token);
+        }
     }
 
     static isUserAuthenticated() {
-        return sessionStorage.getItem('token') !== null;
+        return (sessionStorage.getItem('token') !== null && sessionStorage.getItem('token') !== 'undefined') ;
     }
 
     static deauthenticateToken() {
