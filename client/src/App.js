@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import {BrowserRouter as Router, Link, Redirect, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Link, Route, Redirect} from 'react-router-dom';
+import { Navbar, NavItem, Icon } from 'react-materialize';
 import Auth from './modules/Auth';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
@@ -52,9 +53,9 @@ class App extends Component {
         }).then(res => {
             Auth.deauthenticateToken();
             this.setState({
-                auth: Auth.isUserAuthenticated(),
-            }).catch(err => console.log(err));
-        });
+                auth: false,
+            });
+        }).catch(err => console.log(err));
     }
 
     handleLoginSubmit(e, data) {
@@ -67,16 +68,11 @@ class App extends Component {
             }
         }).then(res => res.json())
         .then(res => {
-            // console.log(`Olha a resposta ${valid}`);
-            // if(this.shouldGoToDash){
-                window.Materialize.toast('Seja Bem Vindo', 5000);
-                Auth.authenticateToken(res.token);
-                this.setState({
-                    auth: Auth.isUserAuthenticated(),
-                });
-            // }else{
-                // window.Materialize.toast('Usuário ou senha inválido', 5000);
-            // }
+            window.Materialize.toast('Seja Bem Vindo', 5000);
+            Auth.authenticateToken(res.token);
+            this.setState({
+                auth: true,
+            });
         }).catch(err => console.log(err));
         
     }
@@ -88,32 +84,57 @@ class App extends Component {
           width: '400px',
           height: 'auto',
       }
+
+      const NavBar = (props) => {
+          return(
+            <Navbar className="" brand='My Todo-List' right >
+                <NavItem className="grey-text" onClick={this.handleLogout} ><Icon>power_settings_new</Icon></NavItem>
+            </Navbar>
+          )
+      }
+
+      const Login = (props) => {
+          return(
+            <div className="container white z-depth-2" style={AppContainer}>
+                <ul className="tabs teal" >
+                    <li className="tab col s3">
+                        <Link className="white-text active"  to="#login">login</Link>
+                    </li>
+                    <li className="tab col s3">
+                        <Link className="white-text" to="#register">register</Link>
+                    </li>
+                </ul>
+                <div id="login" className="col s12">
+                    <LoginForm handleLoginSubmit={this.handleLoginSubmit} />
+                </div>
+                <div id="register" className="col s12">
+                    <RegisterForm handleRegisterSubmit={ this.handleRegisterSubmit } />
+                </div>
+            </div>
+          )
+      }
+      const DashWithNav = (props) => {
+        return(
+            <div>
+                <NavBar />
+                <Dashboard />
+            </div>
+        )
+      }
     return (
+
         <Router>
             <div className='App'>
-            {console.log(`Token ${!this.state.auth}`)}
-            <Route exact path="/" render={() => (!this.state.auth) 
-                ? <div className="container white z-depth-2" style={AppContainer}>
-                        <ul className="tabs teal" >
-                            <li className="tab col s3">
-                                <Link className="white-text active"  to="#login">login</Link>
-                            </li>
-                            <li className="tab col s3">
-                                <Link className="white-text" to="#register">register</Link>
-                            </li>
-                        </ul>
-                        <div id="login" className="col s12">
-                            <LoginForm handleLoginSubmit={this.handleLoginSubmit} />
-                        </div>
-                        <div id="register" className="col s12">
-                            <RegisterForm handleRegisterSubmit={ this.handleRegisterSubmit } />
-                        </div>
-                    </div>
-                : <Redirect to="/dash" />
-            } />
-            <Route exact path="/dash" render={() => <Dashboard />} />
-
-          </div>
+                <Route exact strict path="/" render={() => {
+                    return(<Redirect to='/login' />);
+                    }} />
+                <Route exact strict path="/login" render={() => (
+                    this.state.auth ? (<DashWithNav />) : (<Login />) )
+                    } />
+                <Route exact strict path="/dash" render={() => ( 
+                    this.state.auth ? (<DashWithNav />) : (<Redirect to='/' />) ) 
+                    } />
+            </div>
         </Router>
     );
   }

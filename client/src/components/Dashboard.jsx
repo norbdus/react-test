@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Preloader, Row } from 'react-materialize';
+import { Col, Preloader } from 'react-materialize';
 
 import Auth from '../modules/Auth';
 import AddTaskForm from './AddTaskForm';
@@ -10,17 +10,17 @@ class Dashboard extends Component {
         super();
         this.state = {
             myTasks: [],
-            tasksLoaded: false,
+            tasksLoaded: false
         }
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
-        this.addNewTask = this.addNewTask.bind(this)
+        this.addNewTask = this.addNewTask.bind(this);
         this.addTask = this.addTask.bind(this);
-        this.handleDelete = this.handleDelete.bind(this)
-        this.deleteTask = this.deleteTask.bind(this)
-        this.handleUpdate = this.handleUpdate.bind(this)
-        this.updateTask = this.updateTask.bind(this)
-        this.handleDone = this.handleDone.bind(this)
-        this.doneTask = this.doneTask.bind(this)
+        this.handleDelete = this.handleDelete.bind(this);
+        this.deleteTask = this.deleteTask.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
+        this.updateTask = this.updateTask.bind(this);
+        this.handleDone = this.handleDone.bind(this);
+        this.doneTask = this.doneTask.bind(this);
     }
 
     componentDidMount(){
@@ -39,6 +39,22 @@ class Dashboard extends Component {
             this.getUserTasks();
         })
     }
+
+    // handleLogout(){
+    //     console.log('logout...');
+    //     fetch('/logout', {
+    //         method: 'DELETE',
+    //         headers: {
+    //             token: Auth.getToken(),
+    //             'Authorization': `Token ${Auth.getToken()}`,
+    //         }
+    //     }).then(res => {
+    //         Auth.deauthenticateToken();
+    //         this.setState({
+    //             auth: false,
+    //         });
+    //     }).catch(err => console.log(err));
+    // }
 
     handleFormSubmit(description){
         let body = JSON.stringify({ todo: {description: description} })
@@ -154,10 +170,12 @@ class Dashboard extends Component {
     }
 
     render(){
-        const dash =  {
-            marginTop: '30px',
-            maxWidth: '500px',
-        }
+
+
+        // const dash =  {
+        //     marginTop: '30px',
+        //     maxWidth: '500px',
+        // }
         
         const AppContainer =
         {
@@ -183,14 +201,10 @@ class Dashboard extends Component {
         }
 
         return (
-                <div className='container white z-depth-2' style={AppContainer}>
-                    <Row>
-                        <h2 className="col s10">Todo-List</h2>
-                        <span className='col s2'><i className='grey-text small material-icons'>power_settings_new</i></span>
-                    </Row>
-                    <AddTaskForm addTask={this.addTask} />
-                    <AllTodos todos={this.state.myTasks} handleDelete={this.handleDelete} handleUpdate={this.handleUpdate} handleDone={this.handleDone} />
-                </div>
+            <div className='container white z-depth-2' style={AppContainer}>
+                <AddTaskForm addTask={this.addTask} />
+                <AllTodos todos={this.state.myTasks} handleDelete={this.handleDelete} handleUpdate={this.handleUpdate} handleDone={this.handleDone} />
+            </div>
         )
         
     }
