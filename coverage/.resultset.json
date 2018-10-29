@@ -90,6 +90,16 @@
         1,
         0,
         0,
+        0,
+        null,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         1,
@@ -206,6 +216,12 @@
         0,
         0
       ],
+      "/home/vitorio/projetos_rails/react-test/app/controllers/application_controller_base.rb": [
+        0,
+        null,
+        null,
+        0
+      ],
       "/home/vitorio/projetos_rails/react-test/app/controllers/home_controller.rb": [
         0,
         0,
@@ -229,7 +245,6 @@
         0
       ]
     },
-
-    "timestamp": 1540441202
+    "timestamp": 1540778763
   }
 }

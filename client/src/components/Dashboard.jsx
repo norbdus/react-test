@@ -157,7 +157,15 @@ class Dashboard extends Component {
         const dash =  {
             marginTop: '30px',
             maxWidth: '500px',
-        }        
+        }
+        
+        const AppContainer =
+        {
+          marginTop: '80px',
+          width: '600px',
+          height: 'auto',
+          padding: '20px',
+        }
 
         const AllTodos = (props) => {
             var todos = this.state.myTasks.map((todo) => {
@@ -175,12 +183,11 @@ class Dashboard extends Component {
         }
 
         return (
-                <div className='card' style={dash}>
-                <Row>
-                    <h2 className="col s10">Todo-List</h2>
-                    <span className='col s2'><i className='grey-text small material-icons'>power_settings_new</i></span>
-                </Row>
-                
+                <div className='container white z-depth-2' style={AppContainer}>
+                    <Row>
+                        <h2 className="col s10">Todo-List</h2>
+                        <span className='col s2'><i className='grey-text small material-icons'>power_settings_new</i></span>
+                    </Row>
                     <AddTaskForm addTask={this.addTask} />
                     <AllTodos todos={this.state.myTasks} handleDelete={this.handleDelete} handleUpdate={this.handleUpdate} handleDone={this.handleDone} />
                 </div>
@@ -191,40 +198,3 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
-
-
-// return (
-    //     <div className="card" style={dash}>
-    //         <h2>Todo-List</h2>
-    //         <AddTaskForm addTask={this.addTask} />
-    //         {(this.state.tasksLoaded)
-    //         ? this.state.myTasks.map(task => {
-    //             return (
-    //                 <div className="row">
-    //                     <div className="col s12 m12">
-    //                         <div className="card yellow lighten-4">
-    //                             <div className="card-content white-text left-align">
-    //                                 <span className="card-title"></span>
-    //                                 <label>
-    //                                     <input type="checkbox" defaultChecked={task.done} onChange={() => this.props.handleDone(this.props.todo.id)} />
-    //                                     <span className={ task.done ? 'task_done' :  '' }>
-    //                                     {task.done 
-    //                                     ? <input type='text' ref={input => task.description = input} defaultValue={task.description} />
-    //                                     : <p>{task.description}</p>
-    //                                 }
-    //                                     </span>
-    //                                 </label>
-    //                             </div>
-    //                             <div className="card-action right-align">
-    //                                 {task.done ? '' : <a onClick={() => this.handleEdit()}>{task.done ? 'Salvar' : 'Editar'}</a> }
-    //                                 <a onClick={() => this.props.handleDelete(this.props.todo.id)}>Apagar</a>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                 </div>)
-    //         })
-    //         : <p>Loading...</p>
-    //         }
-    //     </div>
-
-    // )
