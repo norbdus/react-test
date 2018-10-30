@@ -23,7 +23,7 @@ rails db:create
 cd client
 npm install
 cd ../
-foreman start -p 3000
+foreman start -f Foreman.dev
 ```
 
 and the open http://localhost:3000
