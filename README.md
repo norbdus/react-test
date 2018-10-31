@@ -1,4 +1,5 @@
-[![CircleCI](https://circleci.com/gh/norbdus/react-test.svg?style=svg)](https://circleci.com/gh/norbdus/react-test)
+[![CircleCI](https://circleci.com/gh/norbdus/react-test.svg?style=svg)](https://circleci.com/gh/norbdus/react-test) 
+[![Coverage Status](https://coveralls.io/repos/github/norbdus/react-test/badge.svg?branch=master)](https://coveralls.io/github/norbdus/react-test?branch=master)
 
 Rails API with React Client 
 -------------------
