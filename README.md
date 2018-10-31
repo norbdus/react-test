@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/norbdus/react-test.svg?style=svg)](https://circleci.com/gh/norbdus/react-test)
+
 Rails API with React Client 
 -------------------
 
