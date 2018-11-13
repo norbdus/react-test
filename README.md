@@ -26,7 +26,7 @@ rails db:create
 cd client
 npm install
 cd ../
-foreman start -f Foreman.dev
+foreman start -f Procfile.dev
 ```
 
 and the open http://localhost:3000
